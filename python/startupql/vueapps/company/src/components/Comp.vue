@@ -3,6 +3,7 @@
   <div>
 
     <p>Hello World</p>
+    {{ directory }}
 
   </div>
 
