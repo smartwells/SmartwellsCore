@@ -4,10 +4,34 @@ var WriteFilePlugin = require('write-file-webpack-plugin')
 
 module.exports = {
   outputDir: (process.env.NODE_ENV === "production" ? 'dist' : 'static'),
-  baseUrl: '/',
-
+  publicPath: '/',
+/*
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
+*/
  devServer: {
-    publicPath: "http://localhost:1565/",
+    publicPath: 'http://0.0.0.0:1565/',
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
@@ -50,7 +74,7 @@ module.exports = {
         }) :
         new BundleTracker({
           filename: 'webpack-stats.json',
-          publicPath: 'http://localhost:1565/'
+          publicPath: 'http://0.0.0.0:1565/'
         })
       )
     ]
